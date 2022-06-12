@@ -44,7 +44,7 @@ Finished Blasting from 114500 to 114599 100 PhoneID in all
 
 ## 直播回放及课件下载
 
-**说明：仅对含有回放的直播有效，通过Webdriver进行站点爬取，请先预先配置好Google Chrome的Webdriver**
+**说明：仅对含有回放的直播有效，通过Google浏览器的Webdriver进行站点爬取，请先预先配置好Google Chrome的Webdriver**
 
 运行前请修改`fetch-url.js`中的10至14行
 
