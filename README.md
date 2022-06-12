@@ -1,6 +1,10 @@
 # 保利威（Polyv）直播破解器
 
+
+
 ## 直播账号爆破
+
+**说明：仅对含有密码的直播有效，通过`node-fetch`发送小型攻击包爆破密码**
 
 运行前请修改`Blast.js`中的9至11行
 
@@ -10,10 +14,10 @@ var upper_bound = 114600;
 var classid = 1919810;
 ```
 
-其中，`lower_bound`为起始爆破账号，`upper_bound`为末尾爆破账号，即从`lower_bound`开始爆破直至`upper_bound`结束。
+其中，`lower_bound`为起始爆破账号，`upper_bound`为末尾爆破账号，即从`lower_bound`开始每次累加1爆破直至`upper_bound`结束。
 
 `classid`获取方式：
-[`https://live.polyv.cn/splash/1919810`](https://live.polyv.cn/splash/1919810)其中`splash`后的`1919810`即为`classid`
+直播链接形如：[`https://live.polyv.cn/splash/1919810`](https://live.polyv.cn/splash/1919810)其中`splash`后的`1919810`即为`classid`
 
 运行方式：
 
@@ -39,6 +43,8 @@ Finished Blasting from 114500 to 114599 100 PhoneID in all
 
 
 ## 直播回放及课件下载
+
+**说明：仅对含有回放的直播有效，通过Webdriver进行站点爬取，请先预先配置好Google Chrome的Webdriver**
 
 运行前请修改`fetch-url.js`中的10至14行
 
