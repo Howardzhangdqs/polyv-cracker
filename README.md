@@ -40,7 +40,7 @@ Finished Blasting from 114500 to 114599 100 PhoneID in all
 
 其中`114512`、`114514`、`114533`即为可登录的账号
 
-
+<br>
 
 ## 直播回放及课件下载
 
@@ -97,7 +97,7 @@ ffmpeg -i https://live-video-qc.videocc.net/……/index.m3u8 直播2.mp4
 ffmpeg -i https://live-video-qc.videocc.net/……/index.m3u8 直播3.mp4
 ```
 
-同时，如果直播内有使用课件进行讲述，会在当前目录下创建文件，文件树形如：
+同时，如果直播内有使用课件进行讲述，会在当前目录下创建文件并自动下载课件照片，文件树形如：
 
 ```
 课件下载
@@ -112,3 +112,4 @@ ffmpeg -i https://live-video-qc.videocc.net/……/index.m3u8 直播3.mp4
        └─{{ 课件3450610文件名 }}_0000.jpeg
 ```
 
+退出前输出的`FFmpeg download command`（在配置了`FFmpeg`环境变量的电脑上）可直接复制入`cmd`运行，将会自动下载相应的直播回放视频。
