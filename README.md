@@ -77,8 +77,6 @@ config.json存储文件格式（具体示例可见本文件夹下的config.json�
 
 退出前输出的`FFmpeg download command`可在配置了`FFmpeg`环境变量的电脑上直接复制入`cmd`运行，将会自动下载相应的直播回放视频。
 
-如未配置`FFmpeg`，可用本项目文价夹内提供的`FFmpeg`凑合。
-
 运行结束后的控制台输出（非重要内容用`……`省去）：
 
 ```
