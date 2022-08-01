@@ -1,44 +1,39 @@
 # 保利威（Polyv）直播破解器
 
-
+本版本适用于保利威2022年7月Vue后端版
 
 ## 直播账号爆破
 
 **说明：仅对含有密码的直播有效，通过`node-fetch`发送小型攻击包爆破密码**
 
-运行前请修改`Blast.js`中的9至11行
+v0.9版本无需更改源代码即可直接使用
 
-```javascript
-var lower_bound = 114500;
-var upper_bound = 114600;
-var classid = 1919810;
-```
+`Blast.exe`同时提供CLI工具和双击打开使用方法
 
-其中，`lower_bound`为起始爆破账号，`upper_bound`为末尾爆破账号，即从`lower_bound`开始每次累加1爆破直至`upper_bound`结束。
-
-`classid`获取方式：
-直播链接形如：[`https://live.polyv.cn/splash/1919810`](https://live.polyv.cn/splash/1919810)其中`splash`后的`1919810`即为`classid`
-
-运行方式：
-
-```bash
-node Blast.js
-```
-
-运行结束后的控制台输出：
+CLI Usage如下：
 
 ```
-Blaster customized for 保利威（Polyv）
-From 114500 to 114600 100 PhoneID in all
+usage: Blast.js [-h] [-v] [-c CLASS] [-l LOWER] [-u UPPER] [-o]
 
-Blasting 1919810 with key 114512 SUCCESS
-Blasting 1919810 with key 114514 SUCCESS
-Blasting 1919810 with key 114533 SUCCESS
+Blast for Polyv 保利威直播账号爆破器
 
-Finished Blasting from 114500 to 114599 100 PhoneID in all
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -c CLASS, --class CLASS
+                        需要破解的直播id或直播链接 (可在程序运行后输入)
+  -l LOWER, --lower LOWER
+                        起始破解账号的下限 (默认值：100000) (可在程序运行后输入)
+  -u UPPER, --upper UPPER
+                        起始破解账号的上限 (默认值：200000) (可在程序运行后输入)
+  -o, --once            遇到可用账号立即停止
 ```
 
-其中`114512`、`114514`、`114533`即为可登录的账号
+双击打开使用方法：
+
+打开后按要求依次输入【需要破解的直播id或直播链接】【爆破下限】【爆破上限】即会自动开始爆破。
+
+在爆破完毕后会统一输出可用账号。
 
 <br>
 
@@ -46,24 +41,41 @@ Finished Blasting from 114500 to 114599 100 PhoneID in all
 
 **说明：仅对含有回放的直播有效，通过Google浏览器的Webdriver进行站点爬取，请先预先配置好Google Chrome的Webdriver**
 
-运行前请修改`fetch-url.js`中的10至14行
+v0.9版本无需更改源代码即可直接使用
 
-```javascript
-var lower_bound = 114500;
-var upper_bound = 114600;
-var classid = 1919810;
+**`fetch-url.exe`仅提供CLI工具进行配置，若双击运行全部配置将使用默认值。**
+
+CLI Usage如下：
+
+```
+usage: fetch-url.js [-h] [-v] [-c CONFIG] [-o OUTPUT]
+
+Downloader for Polyv 保利威直播账号下载器
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -c CONFIG, --config CONFIG
+                        链接、账号存储文件 (具体格式请见README文件) (默认值: "config.json")
+  -o OUTPUT, --output OUTPUT
+                        课件输出路径 (默认值: "课件下载")
 ```
 
-其中，`lower_bound`为起始爆破账号，`upper_bound`为末尾爆破账号，即从`lower_bound`开始爆破直至`upper_bound`结束。
+config.json存储文件格式（具体示例可见本文件夹下的config.json）：
 
-`classid`获取方式：
-[`https://live.polyv.cn/splash/1919810`](https://live.polyv.cn/splash/1919810)其中`splash`后的`1919810`即为`classid`
-
-运行方式：
-
-```bash
-node fetch-url.js
+```json
+[
+	[直播链接(type:string), 账号(type:int), 课程名称(type:string)],
+    ...以下多条格式同上
+]
 ```
+
+运行时由于网络原因可能报错，重新启动程序即可。
+如多次启动仍然报错，请联系作者我 <zjh@shanghaiit.com>
+
+退出前输出的`FFmpeg download command`可在配置了`FFmpeg`环境变量的电脑上直接复制入`cmd`运行，将会自动下载相应的直播回放视频。
+
+如未配置`FFmpeg`，可用本项目文价夹内提供的`FFmpeg`凑合。
 
 运行结束后的控制台输出（非重要内容用`……`省去）：
 
@@ -100,7 +112,7 @@ ffmpeg -i https://live-video-qc.videocc.net/……/index.m3u8 直播3.mp4
 同时，如果直播内有使用课件进行讲述，会在当前目录下创建文件并自动下载课件照片，文件树形如：
 
 ```
-课件下载
+{{ CLI中配置的OUTPUT }}
 └─{{ 运行时的日期 }}
     ├─直播1
     │  ├─{{ 课件3401314文件名 }}_0000.jpeg
@@ -112,4 +124,3 @@ ffmpeg -i https://live-video-qc.videocc.net/……/index.m3u8 直播3.mp4
        └─{{ 课件3450610文件名 }}_0000.jpeg
 ```
 
-退出前输出的`FFmpeg download command`（在配置了`FFmpeg`环境变量的电脑上）可直接复制入`cmd`运行，将会自动下载相应的直播回放视频。
