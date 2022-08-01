@@ -35,6 +35,8 @@ optional arguments:
 
 在爆破完毕后会统一输出可用账号。
 
+![Snipaste_2022-08-01_12-31-32](https://user-images.githubusercontent.com/75195784/182076641-9df7d301-eeaf-40a9-a33c-a177af7d8967.png)
+
 <br>
 
 ## 直播回放及课件下载
